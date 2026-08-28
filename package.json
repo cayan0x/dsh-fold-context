@@ -21,11 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/panheng97/dsh-fold-context.git"
+    "url": "git+https://github.com/cayan0x/dsh-fold-context.git"
   },
-  "homepage": "https://github.com/panheng97/dsh-fold-context#readme",
+  "homepage": "https://github.com/cayan0x/dsh-fold-context#readme",
   "bugs": {
-    "url": "https://github.com/panheng97/dsh-fold-context/issues"
+    "url": "https://github.com/cayan0x/dsh-fold-context/issues"
   },
   "keywords": [
     "deepseek-harness",
@@ -40,7 +40,7 @@
     "tool-call",
     "ui"
   ],
-  "author": "panheng97",
+  "author": "cayan0x",
   "files": [
     "lib/index.js",
     "lib/client.js"

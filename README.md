@@ -13,7 +13,7 @@ Auto-fold context/system messages in DSH conversation — collapse think blocks,
 ## Install
 
 ```bash
-dsh plugin add https://github.com/panheng97/dsh-fold-context
+dsh plugin add https://github.com/cayan0x/dsh-fold-context
 ```
 
 Or manually: copy the plugin into your DSH profile's `packages/` directory.
