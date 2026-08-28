@@ -41,6 +41,9 @@
     "ui"
   ],
   "author": "cayan0x",
+  "scripts": {
+    "release": "git tag v$(node -p \"require('./package.json').version\") && git push origin main --tags"
+  },
   "files": [
     "lib/index.js",
     "lib/client.js"
