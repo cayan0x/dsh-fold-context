@@ -1,3 +1,19 @@
+## 0.1.2 (2026-08-28)
+
+### Bug Fixes
+- **Pause 空白页崩溃：** 彻底消除 React reconciliation 冲突。v0.1.1 的兄弟节点 `insertBefore` 方案仍会将折叠条插入 React 的 keyed 列表 (`[data-chat-flow]`)，导致 React 在流式/暂停时触发 `reconcileChildrenArray` 抛出 `NotFoundError`。本版本将所有折叠条 UI 移至 `document.body` 下的 `position:fixed` 覆盖层，完全脱离 React 虚拟 DOM 树，仅通过 `classList.add` 操作 React 元素（`height:0` 折叠，不破坏 DOM 结构）。
+
+### Changed
+- 架构重构：折叠条/收起条全部挂载到 `#dshfc-overlay`（body 子节点，React `#root` 之外），通过 `getBoundingClientRect` 绝对定位
+- 折叠方式：用 `height:0` + `overflow:hidden` 替代 `display:none`，保证元素仍可测量位置
+- 滚动重定位：`requestAnimationFrame` 驱动的 `repositionAll` 同步视口坐标
+- 清理：移除 `expandUnit`/`collapseUnit`/`buildUnit`/`repositionAll` 中多余的 `getScrollContainer` 调用
+
+### Known Issues
+- 流式输出时折叠条可能短暂偏移（下一帧 raf 自动修正）
+
+---
+
 ## 0.1.1 (2026-08-28)
 
 ### Bug Fixes
