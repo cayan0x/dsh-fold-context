@@ -1,4 +1,23 @@
+## 0.1.3 (2026-08-29)
+
+### 首个稳定版 🎉
+
+### Bug Fixes
+- **折叠条与正文重叠、滚动不跟随：** 放弃覆盖层浮层方案（v0.1.2），折叠条改用目标元素自身的 `::before` 伪元素渲染，处在文档流中占真实布局空间——天然跟随滚动、永不与正文重叠，无需任何坐标计算与滚动监听
+- **停止/暂停空白页崩溃（彻底修复）：** 对 React 的 DOM 侵入降为零——只添加 class 和 `data-dshfc-bar` 属性（文案存于属性，`content: attr()` 读取），不插入/移动/删除任何 DOM 节点
+
+### Changed
+- 架构重写：删除覆盖层、绝对定位、滚动/resize 监听、rAF 重定位等全部浮层机制
+- 折叠条文案：单条显示「标签 · 预览」，多条相邻自动分组显示「折叠内容 N 项 · …」
+- 展开后内容顶部显示「▴ 收起」条，点击收起（事件委托）
+- React 重渲染重写 class 后，500ms 内定期扫描自动修复（heal）
+- 插件卸载时清理所有添加的 class / 属性 / 样式
+
+---
+
 ## 0.1.2 (2026-08-28)
+
+> ⚠️ 此版本有已知问题（折叠条浮层与正文重叠、滚动不跟随），建议直接安装 0.1.3。
 
 ### Bug Fixes
 - **Pause 空白页崩溃：** 彻底消除 React reconciliation 冲突。v0.1.1 的兄弟节点 `insertBefore` 方案仍会将折叠条插入 React 的 keyed 列表 (`[data-chat-flow]`)，导致 React 在流式/暂停时触发 `reconcileChildrenArray` 抛出 `NotFoundError`。本版本将所有折叠条 UI 移至 `document.body` 下的 `position:fixed` 覆盖层，完全脱离 React 虚拟 DOM 树，仅通过 `classList.add` 操作 React 元素（`height:0` 折叠，不破坏 DOM 结构）。

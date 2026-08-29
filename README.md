@@ -29,7 +29,7 @@ Auto-fold context/system messages in DSH conversation — collapse think blocks,
 dsh plugin add github:cayan0x/dsh-fold-context
 
 # 安装指定版本 / Install specific version
-dsh plugin add github:cayan0x/dsh-fold-context#v0.1.2
+dsh plugin add github:cayan0x/dsh-fold-context#v0.1.3
 ```
 
 Or manually: copy the plugin into your DSH profile's `packages/` directory. / 或手动：将插件复制到 DSH 配置的 `packages/` 目录。
